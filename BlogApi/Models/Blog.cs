@@ -1,9 +1,12 @@
+using System;
+
 namespace BlogApi.Models
 {
   public class Blog
   {
-    public long Id { get; set; }
-    public string Username { get; set; }
-    public string FullName { get; set; }
+    public Guid Id { get; set; }
+    public string Text { get; set; }
+    public DateTime Timestamp { get; set; }
+    public User User { get; set; }
   }
 }

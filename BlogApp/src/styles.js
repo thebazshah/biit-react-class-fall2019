@@ -17,5 +17,13 @@ const styles = {
     fontFamily: 'sans-serif',
     fontSize: 'x-large',
   },
+  blogFeed: {
+    marginLeft: '2%',
+    marginRight: '2%',
+    marginTop: 5,
+    marginBottom: 5,
+    padding: 10,
+    border: '1px solid black'
+  },
 };
 export default styles;

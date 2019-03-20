@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +16,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using BlogApi.Helpers;
 using BlogApi.Services;
+using BlogApi.Models;
 
 namespace BlogApi
 {
@@ -31,6 +33,8 @@ namespace BlogApi
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddCors();
+      services.AddDbContext<BlogContext>(opt =>
+                opt.UseInMemoryDatabase("Blogs"));
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
       // configure strongly typed settings objects
