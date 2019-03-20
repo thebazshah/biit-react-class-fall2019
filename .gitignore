@@ -33,5 +33,9 @@ BlogApi/msbuild.log
 BlogApi/msbuild.err
 BlogApi/msbuild.wrn
 
+# BlogApp
+BlogApp/node_modules/
+
 # Visual Studio 2015
 .vs/
+
