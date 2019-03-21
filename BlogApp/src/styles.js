@@ -45,6 +45,18 @@ const styles = {
     borderRadius: 5,
     shadowColor: 'none',
   },
+  profilePicture: {
+    width: "55px",
+    height: "55px",
+    borderRadius: "50%",
+    background: "#0000ff",
+    fontSize: "30px",
+    color: "#fff",
+    textAlign: "center",
+    lineHeight: "55px",
+    margin: "20px 0",
+    fontFamily: "sans-serif"
+  }
   
 };
 export default styles;

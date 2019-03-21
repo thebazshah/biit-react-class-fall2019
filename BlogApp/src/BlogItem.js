@@ -9,7 +9,7 @@ export default function BlogItem(props) {
   return (
     <div>
       <div>
-        <div>{fullName[0]}</div>
+        <div style={styles.profilePicture} >{fullName[0]}</div>
         <div>User: {user.fullName}</div>
         <div>Timestamp: {blog.timestamp}</div>
       </div>
