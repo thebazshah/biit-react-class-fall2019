@@ -13,10 +13,12 @@ export default function BlogItem(props) {
         <div style={styles.profileName}><b> {user.fullName} </b></div>
       </div>
       <div style= {styles.blogItemMainText} >{blog.text}</div>
-      <div>
-        <div>Posted on: {blog.timestamp}</div>
-        <button style={styles.btnEdit} >Edit</button>
-        <button style={styles.btnDelete} >Delete</button>
+      <div style={styles.blogItemFooter} >
+        <div  style={styles.blogItemTimestamp} >Posted on: {blog.timestamp}</div>
+        <div style={styles.blogItemButtons} >
+          <button style={styles.btnEdit} >Edit</button>
+          <button style={styles.btnDelete} >Delete</button>
+        </div>
       </div>
     </div>
   )

@@ -72,6 +72,16 @@ const styles = {
   blogItemMainText: {
     fontSize: 18,
     fontFamily: 'sans-serif',
+  },
+  blogItemFooter: {
+    display: 'flex',
+    marginTop: 10,
+  },
+  blogItemTimestamp: {
+    alignSelf: 'center',
+  },
+  blogItemButtons: {
+    marginLeft: 'auto',    
   }
   
 };
