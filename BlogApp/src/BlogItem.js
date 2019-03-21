@@ -8,13 +8,13 @@ export default function BlogItem(props) {
   const { fullName = 'Muhammad' } = user;
   return (
     <div>
-      <div style={styles.blogItemUser}>
+      <div style={styles.blogItemHeader}>
         <div style={styles.profilePicture} >{fullName[0]}</div>
         <div style={styles.profileName}><b> {user.fullName} </b></div>
       </div>
-      <div>Text: {blog.text}</div>
+      <div style= {styles.blogItemMainText} >{blog.text}</div>
       <div>
-        <div>Timestamp: {blog.timestamp}</div>
+        <div>Posted on: {blog.timestamp}</div>
         <button style={styles.btnEdit} >Edit</button>
         <button style={styles.btnDelete} >Delete</button>
       </div>

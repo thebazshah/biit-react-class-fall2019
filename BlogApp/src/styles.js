@@ -45,7 +45,7 @@ const styles = {
     borderRadius: 5,
     shadowColor: 'none',
   },
-  blogItemUser: {
+  blogItemHeader: {
     display: 'flex',
   },
   profilePicture: {
@@ -66,8 +66,13 @@ const styles = {
   profileName: {
     flex: 9,
     alignSelf: 'center',
-    marginLeft: '10px'
+    marginLeft: '10px',
+    fontSize: 20
   },
+  blogItemMainText: {
+    fontSize: 18,
+    fontFamily: 'sans-serif',
+  }
   
 };
 export default styles;
