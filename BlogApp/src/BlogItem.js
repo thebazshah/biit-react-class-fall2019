@@ -1,5 +1,6 @@
 import React from 'react';
 import { getUser } from './service';
+import styles from './styles';
 
 export default function BlogItem(props) {
   const { blog = {} } = props || {};
@@ -14,7 +15,7 @@ export default function BlogItem(props) {
       </div>
       <div>Text: {blog.text}</div>
       <div>
-        <button>Edit</button>
+        <button style={styles.btnEdit} >Edit</button>
         <button>Delete</button>
       </div>
     </div>

@@ -25,5 +25,15 @@ const styles = {
     padding: 10,
     border: '1px solid black'
   },
+  btnEdit: {
+    color: "#fff",
+    backgroundColor: "#3498DB",
+    borderColor: "#3498DB",
+    padding: 5,
+    marginRight: 5,
+    marginTop: 5,
+    borderRadius: 5,
+    shadowColor: 'none',
+  }
 };
 export default styles;
