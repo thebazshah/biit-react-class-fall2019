@@ -16,7 +16,7 @@ export default function BlogItem(props) {
       <div>Text: {blog.text}</div>
       <div>
         <button style={styles.btnEdit} >Edit</button>
-        <button>Delete</button>
+        <button style={styles.btnDelete} >Delete</button>
       </div>
     </div>
   )
