@@ -14,7 +14,7 @@ export default function BlogItem(props) {
       </div>
       <div style= {styles.blogItemMainText} >{blog.text}</div>
       <div style={styles.blogItemFooter} >
-        <div  style={styles.blogItemTimestamp} >Posted on: {blog.timestamp}</div>
+        <div  style={styles.blogItemTimestamp} >Posted on: March 20, 2019{/*blog.timestamp*/}</div>
         <div style={styles.blogItemButtons} >
           <button style={styles.btnEdit} >Edit</button>
           <button style={styles.btnDelete} >Delete</button>

@@ -75,10 +75,12 @@ const styles = {
   },
   blogItemFooter: {
     display: 'flex',
+    flexFlow: "row wrap",
     marginTop: 10,
   },
   blogItemTimestamp: {
     alignSelf: 'center',
+    fontSize: 15
   },
   blogItemButtons: {
     marginLeft: 'auto',    
