@@ -25,10 +25,17 @@ const styles = {
     padding: 10,
     border: '1px solid black'
   },
+  blogItemContainer: {
+    background: '#dcdcdf',
+    marginTop: 8,
+    marginBottom: 8,
+    padding: 5,
+    borderRadius: 10,
+  },
   btnEdit: {
     color: "#fff",
-    backgroundColor: "#3498DB",
-    borderColor: "#3498DB",
+    backgroundColor: "#0052cc",
+    borderColor: "#0052cc",
     padding: 5,
     marginRight: 5,
     marginTop: 5,
@@ -37,8 +44,8 @@ const styles = {
   },
   btnDelete: {
     color: "#fff",
-    backgroundColor: "#E74C3C",
-    borderColor: "#E74C3C",
+    backgroundColor: "#ff0000",
+    borderColor: "#ff0000",
     padding: 5,
     marginRight: 5,
     marginTop: 5,
@@ -55,22 +62,22 @@ const styles = {
     maxWidth: "55px",
     maxHeight: "55px",
     borderRadius: "50%",
-    background: "#0000ff",
+    background: "#0066cc",
     fontSize: "30px",
     color: "#fff",
     textAlign: "center",
     lineHeight: "55px",
-    margin: "20px 0",
+    margin: "15px 0",
     fontFamily: "sans-serif",
   },
   profileName: {
     flex: 9,
     alignSelf: 'center',
     marginLeft: '10px',
-    fontSize: 20
+    fontSize: 22
   },
   blogItemMainText: {
-    fontSize: 18,
+    fontSize: 20,
     fontFamily: 'sans-serif',
   },
   blogItemFooter: {

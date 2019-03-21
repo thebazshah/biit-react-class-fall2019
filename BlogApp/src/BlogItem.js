@@ -7,12 +7,12 @@ export default function BlogItem(props) {
   const user = getUser(blog.userId) || {};
   const { fullName = 'Muhammad' } = user;
   return (
-    <div>
+    <div style={styles.blogItemContainer} >
       <div style={styles.blogItemHeader}>
         <div style={styles.profilePicture} >{fullName[0]}</div>
         <div style={styles.profileName}><b> {user.fullName} </b></div>
       </div>
-      <div style= {styles.blogItemMainText} >{blog.text}</div>
+      <div style= {styles.blogItemMainText}> {blog.text}</div>
       <div style={styles.blogItemFooter} >
         <div  style={styles.blogItemTimestamp} >Posted on: March 20, 2019{/*blog.timestamp*/}</div>
         <div style={styles.blogItemButtons} >
