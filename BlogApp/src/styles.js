@@ -45,9 +45,15 @@ const styles = {
     borderRadius: 5,
     shadowColor: 'none',
   },
+  blogItemUser: {
+    display: 'flex',
+  },
   profilePicture: {
-    width: "55px",
-    height: "55px",
+    flex: 1,
+    minWidth: "50px",
+    minHeight: "50px",
+    maxWidth: "55px",
+    maxHeight: "55px",
     borderRadius: "50%",
     background: "#0000ff",
     fontSize: "30px",
@@ -55,8 +61,13 @@ const styles = {
     textAlign: "center",
     lineHeight: "55px",
     margin: "20px 0",
-    fontFamily: "sans-serif"
-  }
+    fontFamily: "sans-serif",
+  },
+  profileName: {
+    flex: 9,
+    alignSelf: 'center',
+    marginLeft: '10px'
+  },
   
 };
 export default styles;
