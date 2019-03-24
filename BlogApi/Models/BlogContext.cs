@@ -6,8 +6,9 @@ namespace BlogApi.Models
 {
   public class BlogContext : DbContext
   {
-    public BlogContext(DbContextOptions<BlogContext> options) : base(options)
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+      optionsBuilder.UseSqlite("Data Source=blogging.db");
     }
 
     public DbSet<Blog> Blogs { get; set; }
