@@ -1,8 +1,7 @@
 import React from 'react'
-import styles from './styles'
+import styles from '../styles/styles'
 
 export default function Header(props) {
-  console.log(props)
   const { title = "Blog Feed", onClickAdd = () => {} } = props || {};
   return (
     <div style = {styles.mainHeader} >

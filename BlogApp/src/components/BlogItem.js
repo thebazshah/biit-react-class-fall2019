@@ -1,12 +1,11 @@
 import React from "react";
-import { getUser } from "./service";
-import styles from "./styles";
+import { getUser } from "../services/service";
+import styles from "../styles/styles";
 
-export default function BlogItem(props) {
+const BlogItem = props => {
   const { blog = {}, history = {} } = props || {};
   const user = getUser(blog.userId) || {};
   const { fullName = "Muhammad" } = user;
-  console.log("blog", blog)
   return (
     <div style={styles.blogItemContainer}>
       <div style={styles.blogItemHeader}>
@@ -27,4 +26,6 @@ export default function BlogItem(props) {
       </div>
     </div>
   );
-}
+};
+
+export default BlogItem;

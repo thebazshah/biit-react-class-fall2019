@@ -1,10 +1,9 @@
 import React from 'react';
 import BlogItem from './BlogItem';
-import styles from './styles';
+import styles from '../styles/styles';
 
-export default function BlogFeed(props) {
+const BlogFeed = props => {
   const { blogs = [], history = {} } = props || {};
-  console.log("blogs props", props);
   const blogsJsx = blogs.map(blog => {
     return <BlogItem key={blog.id} blog={blog} history={history} />;
   });
@@ -14,3 +13,5 @@ export default function BlogFeed(props) {
     </div>
   )
 }
+
+export default BlogFeed;
