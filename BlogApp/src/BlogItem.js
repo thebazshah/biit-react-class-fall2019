@@ -3,9 +3,10 @@ import { getUser } from "./service";
 import styles from "./styles";
 
 export default function BlogItem(props) {
-  const { blog = {} } = props || {};
+  const { blog = {}, history = {} } = props || {};
   const user = getUser(blog.userId) || {};
   const { fullName = "Muhammad" } = user;
+  console.log("blog", blog)
   return (
     <div style={styles.blogItemContainer}>
       <div style={styles.blogItemHeader}>
@@ -20,7 +21,7 @@ export default function BlogItem(props) {
           Posted on: {blog.timestamp}
         </div>
         <div style={styles.blogItemButtons}>
-          <button style={styles.btnEdit}> Edit </button>
+          <button style={styles.btnEdit} onClick={() => history.push("/e:" + blog.id)}> Edit </button>
           <button style={styles.btnDelete}> Delete </button>
         </div>
       </div>
