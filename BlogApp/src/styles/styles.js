@@ -11,11 +11,16 @@ const styles = {
     marginTop: 5,
     marginBottom: 5,
     padding: 10,
-    border: '1px solid black'
+    border: '1px solid black',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   headerTitle: {
     fontFamily: 'sans-serif',
     fontSize: 'x-large',
+    display: 'flex',
+    flex: 1,
   },
   blogFeed: {
     marginLeft: '2%',
