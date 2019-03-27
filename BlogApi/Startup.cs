@@ -33,9 +33,10 @@ namespace BlogApi
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddCors();
-      services.AddDbContext<BlogContext>(opt =>
-                opt.UseInMemoryDatabase("Blogs"));
-      services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+      services.AddDbContext<BlogContext>();
+      services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(
+        o => o.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+      );
 
       // configure strongly typed settings objects
       var appSettingsSection = Configuration.GetSection("AppSettings");
