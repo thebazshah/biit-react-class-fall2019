@@ -6,7 +6,10 @@ export default function Header(props) {
   return (
     <div style = {styles.mainHeader} >
       <div style = { styles.headerTitle }>{title}</div>
-      <button onClick={onClickAdd}>Add</button>
+        <div style = { styles.headerActionButtons } >
+            <button style = { styles.btnAdd } onClick={onClickAdd}>New</button>
+            <button style = { styles.btnLogout } >Logout</button>     
+        </div>
     </div>
   )
 }
