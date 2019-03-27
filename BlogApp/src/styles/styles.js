@@ -91,7 +91,24 @@ const styles = {
   },
   blogItemButtons: {
     marginLeft: 'auto',    
+  },
+  btnAdd: {
+    "display": "inline-block",
+    "fontWeight": "400",
+    "color": "#212529",
+    "textAlign": "center",
+    "verticalAlign": "middle",
+    "userSelect": "none",
+    "backgroundColor": "transparent",
+    "border": "1px solid transparent",
+    "padding": ".375rem .75rem",
+    "fontSize": "1rem",
+    "lineHeight": "1.5",
+    "borderRadius": ".25rem",
+    "color": "#fff",
+    "backgroundColor": "#007bff",
+    "borderColor": "#007bff",
+    "marginTop": 10,
   }
-  
 };
 export default styles;
