@@ -36,6 +36,9 @@ BlogApi/msbuild.wrn
 # BlogApp
 BlogApp/node_modules
 
+# BlogRNApp
+BlogRNApp/node_modules
+
 # Visual Studio 2015
 .vs/
 

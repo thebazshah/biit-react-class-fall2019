@@ -1,3 +1,6 @@
+import { AsyncStorage } from 'react-native';
+import { isJSXMemberExpression } from '@babel/types';
+
 const baseUrl = "http://localhost:5001";
 
 const getUrl = url => {
@@ -20,12 +23,12 @@ export const authenticate = async (username, password) => {
     }),
   });
   const result = await response.json();
-  localStorage.setItem('auth', result);
+  AsyncStorage.setItem('auth', JSON.stringify(result));
   return result;
 };
 
 export const isUserAuthenticated = () => {
-  const user = localStorage.getItem('auth');
+  const user = JSON.parse(AsyncStorage.getItem('auth'));
   if (user) {
     return true;
   } else {
@@ -34,7 +37,7 @@ export const isUserAuthenticated = () => {
 };
 
 export const getToken = () => {
-  const user = localStorage.getItem("auth");
+  const user = JSON.parse(localStorage.getItem("auth"));
   if (user) {
     return user.token;
   } else {
