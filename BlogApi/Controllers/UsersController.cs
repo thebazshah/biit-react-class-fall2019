@@ -29,6 +29,13 @@ namespace WebApi.Controllers
       return Ok(user);
     }
 
+    [AllowAnonymous]
+    [HttpGet("health")]
+    public string Health([FromBody]User userParam)
+    {
+      return "It works";
+    }
+
     [HttpGet]
     public IActionResult GetAll()
     {

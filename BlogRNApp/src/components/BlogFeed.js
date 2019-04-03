@@ -5,13 +5,13 @@ import BlogItem from './BlogItem';
 import styles from '../styles/styles';
 
 const BlogFeed = props => {
-  const { blogs = [], history = {} } = props || {};
-  const blogsJsx = blogs.map(blog => {
-    return <BlogItem key={blog.id} blog={blog} history={history} />;
-  });
+  const { blogs = [] } = props || {};
+  // const blogsJsx = blogs.map(blog => {
+  //   return <BlogItem key={blog.id} blog={blog} history={history} />;
+  // });
   return (
     <View style={styles.blogFeed}>
-      {blogsJsx}
+      {/* {blogsJsx} */}
     </View>
   )
 }

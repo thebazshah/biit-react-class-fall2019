@@ -1,7 +1,6 @@
 import { AsyncStorage } from 'react-native';
-import { isJSXMemberExpression } from '@babel/types';
 
-const baseUrl = "http://localhost:5001";
+const baseUrl = "https://localhost:5001";
 
 const getUrl = url => {
   return baseUrl + url;
@@ -9,26 +8,28 @@ const getUrl = url => {
 
 export const authenticate = async (username, password) => {
   const url = getUrl("/Users/Authenticate");
+  const authInfo = { username, password };
   const response = await fetch(url, {
-    method: 'POST',
-    mode: 'cors',
-    cache: 'no-cache',
+    method: "POST",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
     headers: {
-      'Content-Type': 'application/json; charset=utf-8',
+      "Content-Type": "application/json; charset=utf-8"
     },
-    redirect: 'follow',
-    body: JSON.stringify({
-      username,
-      password,
-    }),
+    redirect: "follow",
+    body: JSON.stringify(authInfo)
   });
+  console.log('response', response)
   const result = await response.json();
   AsyncStorage.setItem('auth', JSON.stringify(result));
   return result;
 };
 
-export const isUserAuthenticated = () => {
-  const user = JSON.parse(AsyncStorage.getItem('auth'));
+export const isUserAuthenticated = async () => {
+  const authInfo = await AsyncStorage.getItem('auth');
+  const user = JSON.parse(authInfo);
+  console.log('user', user);
   if (user) {
     return true;
   } else {
@@ -36,8 +37,9 @@ export const isUserAuthenticated = () => {
   }
 };
 
-export const getToken = () => {
-  const user = JSON.parse(localStorage.getItem("auth"));
+export const getToken = async () => {
+  const authInfo = await AsyncStorage.getItem("auth");
+  const user = JSON.parse(authInfo);
   if (user) {
     return user.token;
   } else {
@@ -47,58 +49,20 @@ export const getToken = () => {
 
 export const getBlogs = async () => {
   const url = getUrl("/api/blogs");
+  const token = await getToken();
   const response = await fetch(url, {
     mode: 'cors',
     cache: 'no-cache',
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
-      'Authorization': "Bearer " + getToken()
+      'Authorization': "Bearer " + token
     },
     redirect: 'follow'
   });
   const result = await response.json();
+  console.log('result', result);
   return result;
 };
-
-export const users = [
-  {
-    id: '1',
-    username: 'shahbaz',
-    fullName: 'Muhammad Shahbaz'
-  },
-  {
-    id: '2',
-    username: 'haider',
-    fullName: 'Haider Ali'
-  }
-];
-
-export const blogs = [
-  {
-    id: '1',
-    text: 'Tension between Pakistan and India',
-    timestamp: 123,
-    userId: '1'
-  },
-  {
-    id: '2',
-    text: 'So Quetta wins PSL19...',
-    timestamp: 123,
-    userId: '1'
-  },
-  {
-    id: '3',
-    text: 'Pakistan is playing fair game in CPEC. See what happens.',
-    timestamp: 123,
-    userId: '2'
-  },
-  {
-    id: '4',
-    text: 'Pakistan asks India to become part of CPEC.',
-    timestamp: 123,
-    userId: '2'
-  }
-];
 
 export const getUser = id => {
   const filteredUsers = users.filter(user => {
@@ -131,5 +95,53 @@ export const getUserBlogs = userId => {
   if (filteredBlogs && filteredBlogs.length > 0) {
     return filteredBlogs;
   }
+  return null;
+};
+
+postData = async (url, data) => {
+  try {
+    const token = await this.fetchToken();
+    const response = await fetch(url, {
+      method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        "x-access-token": token
+      },
+      redirect: "follow",
+      referrer: "no-referrer",
+      body: JSON.stringify(data)
+    });
+    return await response.json();
+  } catch (err) {
+    console.log(err);
+  }
+  return null;
+};
+
+getData = async url => {
+  try {
+    const token = await this.fetchToken();
+    const options = {
+      method: "GET",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        "x-access-token": token
+      },
+      redirect: "follow",
+      referrer: "no-referrer"
+    };
+
+    const response = await fetch(url, options);
+    return await response.json();
+  } catch (err) {
+    console.log(err);
+  }
+
   return null;
 };
