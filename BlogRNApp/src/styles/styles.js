@@ -12,9 +12,13 @@ const styles = {
     marginBottom: 5,
     padding: 10,
     border: '1px solid black',
+    borderColor: 'black',
+    borderStyle: 'solid',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    width: '100%',
+    height: 150,
   },
   headerTitle: {
     fontFamily: 'sans-serif',

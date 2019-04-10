@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from 'react-native';
+import { View, ScrollView, Text } from 'react-native';
 
 import { authenticate, getBlogs, isUserAuthenticated } from "../services/service";
 import BlogFeed from "../components/BlogFeed";
@@ -16,6 +16,7 @@ class Main extends React.Component {
 
   componentDidMount = async () => {
     const isAuthenticated = await isUserAuthenticated();
+    console.log('isAuth', isAuthenticated);
     if (!isAuthenticated) {
       await authenticate('test1', 'test1');
     }
@@ -25,15 +26,21 @@ class Main extends React.Component {
   getBlogsFromApi = async () => {
     const blogs = await getBlogs();
     if (blogs) {
-      this.setState({ blogs, loading: false });
+      setTimeout(() => {
+        this.setState({ blogs, loading: false });
+      },1000);
     } else {
-      this.setState({ loading: false });
+      setTimeout(() => {
+        this.setState({ loading: false });
+      }, 1000);
     }
   };
 
   render() {
+    const { blogs = [], loading } = this.state || {};
+    console.log(blogs)
     let mainJsx = null;
-    if (this.state.blogs.length > 0) {
+    if (blogs.length > 0) {
       mainJsx = <React.Fragment>
         <Header title="My Blog Feed" onClickAdd={() => { }} />
         <BlogFeed blogs={blogs} />
@@ -45,7 +52,13 @@ class Main extends React.Component {
         </View>
       </React.Fragment>);
     }
-    return mainJsx;
+    if (loading) {
+      return (<View>
+        <Text>Loading...</Text>
+      </View>);
+    } else {
+      return mainJsx;
+    }
   }
 };
 

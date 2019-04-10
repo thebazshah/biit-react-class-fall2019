@@ -1,19 +1,24 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 import BlogItem from './BlogItem';
-import styles from '../styles/styles';
 
 const BlogFeed = props => {
   const { blogs = [] } = props || {};
-  // const blogsJsx = blogs.map(blog => {
-  //   return <BlogItem key={blog.id} blog={blog} history={history} />;
-  // });
+  const blogsJsx = blogs.map(blog => {
+    return <BlogItem key={blog.id} blog={blog} />;
+  });
   return (
-    <View style={styles.blogFeed}>
-      {/* {blogsJsx} */}
-    </View>
+    <ScrollView style={styles.blogFeed}>
+      {blogsJsx}
+    </ScrollView>
   )
 }
 
 export default BlogFeed;
+
+const styles = {
+  blogFeed: {
+    width: "95%",
+  }
+};
