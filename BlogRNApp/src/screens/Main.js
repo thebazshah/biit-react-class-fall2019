@@ -28,7 +28,7 @@ class Main extends React.Component {
     if (blogs) {
       setTimeout(() => {
         this.setState({ blogs, loading: false });
-      },1000);
+      }, 1000);
     } else {
       setTimeout(() => {
         this.setState({ loading: false });
@@ -37,13 +37,15 @@ class Main extends React.Component {
   };
 
   render() {
+    console.log('props', this.props);
     const { blogs = [], loading } = this.state || {};
+    const { navigation = {} } = this.props || {};
     console.log(blogs)
     let mainJsx = null;
     if (blogs.length > 0) {
       mainJsx = <React.Fragment>
         <Header title="My Blog Feed" onClickAdd={() => { }} />
-        <BlogFeed blogs={blogs} />
+        <BlogFeed blogs={blogs} navigation={navigation} />
       </React.Fragment>;
     } else {
       mainJsx = (<React.Fragment>
@@ -57,9 +59,32 @@ class Main extends React.Component {
         <Text>Loading...</Text>
       </View>);
     } else {
-      return mainJsx;
+      return <View style={styles.container}>
+        {mainJsx}
+      </View>;
     }
   }
 };
 
 export default Main;
+
+const styles = {
+  container: {
+    flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "center",
+    backgroundColor: "#eee",
+    marginTop: 35,
+    marginBottom: 30,
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: "center",
+    margin: 10
+  },
+  instructions: {
+    textAlign: "center",
+    color: "#333333",
+    marginBottom: 5
+  }
+};

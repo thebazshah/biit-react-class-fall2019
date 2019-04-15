@@ -5,7 +5,7 @@ import { getUser } from "../services/service";
 // import styles from "../styles/styles";
 
 const BlogItem = props => {
-  const { blog = {} } = props || {};
+  const { blog = {}, navigation = {} } = props || {};
   const user = getUser(blog.userId) || {};
   const { fullName = "Muhammad Shahbaz" } = user;
   return (
@@ -23,7 +23,9 @@ const BlogItem = props => {
         <View style={styles.blogItemButtons}>
           <Button
             style={styles.btnEdit}
-            onPress={() => {}}
+            onPress={() => {
+              navigation.navigate('EditBlog', { blog });
+            }}
             title="Edit"
           />
           <Button style={styles.btnDelete} title="Delete" />
