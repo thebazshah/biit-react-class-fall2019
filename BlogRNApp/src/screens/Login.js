@@ -27,12 +27,14 @@ class Login extends Component {
 		return (
 			<View style={styles.container}>
 				<TextInput
+					style={styles.txtInput}
 					placeholder={'Username'}
 					onChangeText={(txt) => {
 						this.setState({ userName: txt });
 					}}
 				/>
 				<TextInput
+					style={styles.txtInput}
 					placeholder={'Password'}
 					secureTextEntry={true}
 					onChangeText={(txt) => {
@@ -40,6 +42,7 @@ class Login extends Component {
 					}}
 				/>
 				<Button
+					style={styles.btnSubmit}
 					onPress={() => {
 						if (this.state.userName === '' || this.state.password === '') {
 							alert('Please enter your credential');
@@ -66,5 +69,11 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'stretch',
 		padding: 50
-	}
+	},
+	txtInput: {
+		fontSize: 18
+    },
+    btnSubmit: {
+        fontSize: 18
+    }
 });
