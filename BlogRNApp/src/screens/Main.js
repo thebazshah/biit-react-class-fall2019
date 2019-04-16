@@ -5,6 +5,7 @@ import { authenticate, getBlogs, isUserAuthenticated } from "../services/service
 import BlogFeed from "../components/BlogFeed";
 import Header from "../components/header";
 import ZakiActivityIndicator from "zakiactivityindicator";
+import TestComponentItem from '../components/TestComponentItem';
 
 class Main extends React.Component {
   constructor(props) {
@@ -12,6 +13,20 @@ class Main extends React.Component {
     this.state = {
       blogs: [],
       loading: true,
+      students: [
+        {
+          id: 1,
+          registered: false,
+        },
+        {
+          id: 2,
+          registered: false,
+        },
+        {
+          id: 3,
+          registered: false,
+        },
+      ],
     };
   }
 
@@ -37,15 +52,42 @@ class Main extends React.Component {
     }
   };
 
+  handleChangeRegistration = studentId => {
+    const { students = [] } = this.state;
+    const modifiedStudents = [];
+    students.map(student => {
+      if (student.id === studentId) {
+        student.registered = !student.registered;
+      }
+      modifiedStudents.push(student);
+    });
+    this.setState({ students: modifiedStudents });
+  };
+
   render() {
     console.log('props', this.props);
     const { blogs = [], loading } = this.state || {};
     const { navigation = {} } = this.props || {};
     console.log(blogs)
     let mainJsx = null;
+    ///////////////////////////////////////////////////////////////
+    /// for demonstration of checklist based on id, to be removed
+    ///////////////////////////////////////////////////////////////
+    const { students = [] } = this.state;
+    const testJsx = students.map(student => {
+      return <TestComponentItem
+        student={student}
+        onChangeRegistration={this.handleChangeRegistration}
+      />
+    });
+    ///////////////////////////////////////////////////////////////
+    /// END: for demonstration of checklist based on id, to be removed
+    ///////////////////////////////////////////////////////////////
+    
     if (blogs.length > 0) {
       mainJsx = <React.Fragment>
         <Header title="My Blog Feed" onClickAdd={() => { }} navigation={navigation} />
+        <View>{testJsx}</View>
         <BlogFeed blogs={blogs} navigation={navigation} />
       </React.Fragment>;
     } else {
