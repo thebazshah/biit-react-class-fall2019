@@ -64,6 +64,12 @@ export const authenticate = (username, password) => {
   return true;
 };
 
+
+export const unAuthenticate = async () => {
+    await AsyncStorage.removeItem('auth');
+    return true;
+};
+
 export const getBlogs = () => {
   return blogs;
 };

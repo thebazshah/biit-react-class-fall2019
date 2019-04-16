@@ -4,6 +4,7 @@ import { View, ScrollView, Text } from 'react-native';
 import { authenticate, getBlogs, isUserAuthenticated } from "../services/service";
 import BlogFeed from "../components/BlogFeed";
 import Header from "../components/header";
+import ZakiActivityIndicator from "zakiactivityindicator";
 
 class Main extends React.Component {
   constructor(props) {
@@ -44,25 +45,23 @@ class Main extends React.Component {
     let mainJsx = null;
     if (blogs.length > 0) {
       mainJsx = <React.Fragment>
-        <Header title="My Blog Feed" onClickAdd={() => { }} />
+        <Header title="My Blog Feed" onClickAdd={() => { }} navigation={navigation} />
         <BlogFeed blogs={blogs} navigation={navigation} />
       </React.Fragment>;
     } else {
       mainJsx = (<React.Fragment>
         <View>
-          <Text>No blogs found.</Text>
+        <Header title="My Blog Feed" onClickAdd={() => { }} navigation={navigation} />
+          <Text style={{fontSize: 22, color: "#000"}}>No blogs found.</Text>
         </View>
       </React.Fragment>);
     }
-    if (loading) {
-      return (<View>
-        <Text>Loading...</Text>
-      </View>);
-    } else {
+
       return <View style={styles.container}>
+        <ZakiActivityIndicator loading={this.state.loading} />
         {mainJsx}
       </View>;
-    }
+    
   }
 };
 
