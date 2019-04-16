@@ -6395,3 +6395,8 @@ yargs@^9.0.0:
     which-module "^2.0.0"
     y18n "^3.2.1"
     yargs-parser "^7.0.0"
+
+zakiactivityindicator@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/zakiactivityindicator/-/zakiactivityindicator-1.0.5.tgz#3334b3d241cf11ce535f2fe95acef692baca025f"
+  integrity sha512-mrCjBhcEXVdJjG2bDHRV1xOBcRTu83Tw86YUfhkx9AXmC7FUmbN/WESYJLX2OrzoBkBOLEJTGNkFtAf2h8EhpQ==
