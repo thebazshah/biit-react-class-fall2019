@@ -84,25 +84,32 @@ class Main extends React.Component {
     /// END: for demonstration of checklist based on id, to be removed
     ///////////////////////////////////////////////////////////////
     
-    if (blogs.length > 0) {
-      mainJsx = <React.Fragment>
-        <Header title="My Blog Feed" onClickAdd={() => { }} navigation={navigation} />
-        <View>{testJsx}</View>
-        <BlogFeed blogs={blogs} navigation={navigation} />
-      </React.Fragment>;
-    } else {
-      mainJsx = (<React.Fragment>
-        <View>
-        <Header title="My Blog Feed" onClickAdd={() => { }} navigation={navigation} />
-          <Text style={{fontSize: 22, color: "#000"}}>No blogs found.</Text>
-        </View>
-      </React.Fragment>);
+    if(this.state.loading) {
+        return <View style={styles.container}>
+                    <ZakiActivityIndicator loading={this.state.loading} />
+                    {mainJsx}
+                </View>;
     }
-
-      return <View style={styles.container}>
-        <ZakiActivityIndicator loading={this.state.loading} />
-        {mainJsx}
-      </View>;
+    else {
+        if (blogs.length > 0) {
+        mainJsx =   <React.Fragment>
+                        <Header title="My Blog Feed" onClickAdd={() => { }} navigation={navigation} />
+                        <View>{testJsx}</View>
+                        <BlogFeed blogs={blogs} navigation={navigation} />
+                    </React.Fragment>;
+        } else {
+        mainJsx =   <React.Fragment>
+                        <View>
+                        <Header title="My Blog Feed" onClickAdd={() => { }} navigation={navigation} />
+                        <Text style={{fontSize: 22, color: "#000"}}>No blogs found.</Text>
+                        </View>
+                    </React.Fragment>;
+        }
+        return  <View style={styles.container}>
+                    {mainJsx}
+                </View>;
+}
+      
     
   }
 };
