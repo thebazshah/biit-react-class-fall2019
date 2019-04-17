@@ -5,7 +5,7 @@ import { authenticate, getBlogs, isUserAuthenticated } from "../services/service
 import BlogFeed from "../components/BlogFeed";
 import Header from "../components/header";
 import ZakiActivityIndicator from "zakiactivityindicator";
-import TestComponentItem from '../components/TestComponentItem';
+// import TestComponentItem from '../components/TestComponentItem';
 
 class Main extends React.Component {
   constructor(props) {
@@ -13,20 +13,20 @@ class Main extends React.Component {
     this.state = {
       blogs: [],
       loading: true,
-      students: [
-        {
-          id: 1,
-          registered: false,
-        },
-        {
-          id: 2,
-          registered: false,
-        },
-        {
-          id: 3,
-          registered: false,
-        },
-      ],
+    //   students: [
+    //     {
+    //       id: 1,
+    //       registered: false,
+    //     },
+    //     {
+    //       id: 2,
+    //       registered: false,
+    //     },
+    //     {
+    //       id: 3,
+    //       registered: false,
+    //     },
+    //   ],
     };
   }
 
@@ -44,25 +44,27 @@ class Main extends React.Component {
     if (blogs) {
       setTimeout(() => {
         this.setState({ blogs, loading: false });
-      }, 1000);
+      }, 1300);
     } else {
       setTimeout(() => {
         this.setState({ loading: false });
-      }, 1000);
+      }, 1300);
     }
   };
 
-  handleChangeRegistration = studentId => {
-    const { students = [] } = this.state;
-    const modifiedStudents = [];
-    students.map(student => {
-      if (student.id === studentId) {
-        student.registered = !student.registered;
-      }
-      modifiedStudents.push(student);
-    });
-    this.setState({ students: modifiedStudents });
-  };
+//  THIS WAS JUST FOR DEMO PURPOSE !! 👇👇
+
+//   handleChangeRegistration = studentId => {
+//     const { students = [] } = this.state;
+//     const modifiedStudents = [];
+//     students.map(student => {
+//       if (student.id === studentId) {
+//         student.registered = !student.registered;
+//       }
+//       modifiedStudents.push(student);
+//     });
+//     this.setState({ students: modifiedStudents });
+//   };
 
   render() {
     console.log('props', this.props);
@@ -73,13 +75,13 @@ class Main extends React.Component {
     ///////////////////////////////////////////////////////////////
     /// for demonstration of checklist based on id, to be removed
     ///////////////////////////////////////////////////////////////
-    const { students = [] } = this.state;
-    const testJsx = students.map(student => {
-      return <TestComponentItem
-        student={student}
-        onChangeRegistration={this.handleChangeRegistration}
-      />
-    });
+    // const { students = [] } = this.state;
+    // const testJsx = students.map(student => {
+    //   return <TestComponentItem
+    //     student={student}
+    //     onChangeRegistration={this.handleChangeRegistration}
+    //   />
+    // });
     ///////////////////////////////////////////////////////////////
     /// END: for demonstration of checklist based on id, to be removed
     ///////////////////////////////////////////////////////////////
@@ -87,14 +89,16 @@ class Main extends React.Component {
     if(this.state.loading) {
         return <View style={styles.container}>
                     <ZakiActivityIndicator loading={this.state.loading} />
-                    {mainJsx}
+                    <Text style={{fontSize: 25, color: "#000", fontWeight: "bold"}} >
+                        Loading...{'\n\n\n'}Please Wait 😇
+                    </Text>
                 </View>;
     }
     else {
         if (blogs.length > 0) {
         mainJsx =   <React.Fragment>
                         <Header title="My Blog Feed" onClickAdd={() => { }} navigation={navigation} />
-                        <View>{testJsx}</View>
+                        {/* <View>{testJsx}</View> */}
                         <BlogFeed blogs={blogs} navigation={navigation} />
                     </React.Fragment>;
         } else {
