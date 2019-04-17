@@ -5,6 +5,7 @@ import Main from './screens/Main';
 import EditBlog from './screens/EditBlog';
 import Login from './screens/Login';
 import AppStart from './screens/AppStart';
+import AddCar from './screens/AddCar';
 
 const mainNavigator = createStackNavigator({
 	Home: {
@@ -15,6 +16,9 @@ const mainNavigator = createStackNavigator({
 	},
 	EditBlog: {
 		screen: EditBlog
+	},
+	AddCar: {
+		screen: AddCar
 	}
 });
 

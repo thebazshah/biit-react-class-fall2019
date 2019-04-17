@@ -14,7 +14,10 @@ export default function Header(props) {
       <View style={styles.headerActionButtons}>
         <Button
           style={styles.btnAdd}
-          onPress={onClickAdd}
+          // onPress={onClickAdd}
+          onPress={() => {
+            navigation.navigate('AddCar');
+          }}
           title="New"
         />
         <Button onPress={() => { 

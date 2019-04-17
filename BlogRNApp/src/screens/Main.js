@@ -5,6 +5,8 @@ import { authenticate, getBlogs, isUserAuthenticated } from "../services/service
 import BlogFeed from "../components/BlogFeed";
 import Header from "../components/header";
 import ZakiActivityIndicator from "zakiactivityindicator";
+import CarFeed from "../components/CarFeed";
+import { getCars } from '../services/service';
 // import TestComponentItem from '../components/TestComponentItem';
 
 class Main extends React.Component {
@@ -12,6 +14,7 @@ class Main extends React.Component {
     super(props);
     this.state = {
       blogs: [],
+      cars: [],
       loading: true,
     //   students: [
     //     {
@@ -37,6 +40,8 @@ class Main extends React.Component {
       await authenticate('test1', 'test1');
     }
     await this.getBlogsFromApi();
+    const cars = await getCars();
+    this.setState({ cars, loading: false });
   };
 
   getBlogsFromApi = async () => {
@@ -68,9 +73,9 @@ class Main extends React.Component {
 
   render() {
     console.log('props', this.props);
-    const { blogs = [], loading } = this.state || {};
+    const { blogs = [], cars = [], loading } = this.state || {};
     const { navigation = {} } = this.props || {};
-    console.log(blogs)
+    console.log("cars", cars)
     let mainJsx = null;
     ///////////////////////////////////////////////////////////////
     /// for demonstration of checklist based on id, to be removed
@@ -99,7 +104,8 @@ class Main extends React.Component {
         mainJsx =   <React.Fragment>
                         <Header title="My Blog Feed" onClickAdd={() => { }} navigation={navigation} />
                         {/* <View>{testJsx}</View> */}
-                        <BlogFeed blogs={blogs} navigation={navigation} />
+                        <CarFeed cars={cars} navigation={navigation} />
+                        {/* <BlogFeed blogs={blogs} navigation={navigation} /> */}
                     </React.Fragment>;
         } else {
         mainJsx =   <React.Fragment>

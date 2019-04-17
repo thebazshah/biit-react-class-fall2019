@@ -43,6 +43,27 @@ import { AsyncStorage } from "react-native";
 //   return result;
 // };
 
+export const getCars = async () => {
+  const url = "http://40.87.94.52:8000/api/car";
+  const cars = await getData(url);
+  return cars;
+};
+
+export const addCar = async (maker, model, year) => {
+  const url = "http://40.87.94.52:8000/api/car/create";
+  const car = {
+    maker,
+    model,
+    year,
+    driver: 2
+  };
+  const response = await postData(url, car);
+  if (response) {
+    return true;
+  } else return false;
+}
+
+
 export const isUserAuthenticated = async () => {
   const authInfo = await AsyncStorage.getItem("auth");
   const user = JSON.parse(authInfo);
@@ -154,53 +175,50 @@ export const getUser = async userId => {
 //   return null;
 // };
 
-// postData = async (url, data) => {
-//   try {
-//     const token = await this.fetchToken();
-//     const response = await fetch(url, {
-//       method: "POST",
-//       mode: "cors",
-//       cache: "no-cache",
-//       credentials: "same-origin",
-//       headers: {
-//         "Content-Type": "application/json; charset=utf-8",
-//         "x-access-token": token
-//       },
-//       redirect: "follow",
-//       referrer: "no-referrer",
-//       body: JSON.stringify(data)
-//     });
-//     return await response.json();
-//   } catch (err) {
-//     console.log(err);
-//   }
-//   return null;
-// };
+postData = async (url, data) => {
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      redirect: "follow",
+      referrer: "no-referrer",
+      body: JSON.stringify(data)
+    });
+    return await response.json();
+  } catch (err) {
+    console.log(err);
+  }
+  return null;
+};
 
-// getData = async url => {
-//   try {
-//     const token = await this.fetchToken();
-//     const options = {
-//       method: "GET",
-//       mode: "cors",
-//       cache: "no-cache",
-//       credentials: "same-origin",
-//       headers: {
-//         "Content-Type": "application/json; charset=utf-8",
-//         "x-access-token": token
-//       },
-//       redirect: "follow",
-//       referrer: "no-referrer"
-//     };
+getData = async url => {
+  try {
+    const options = {
+      method: "GET",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      redirect: "follow",
+      referrer: "no-referrer"
+    };
+    console.log("Going to call getData")
+    const response = await fetch(url, options);
+    console.log("response", response)
+    return await response.json();
+  } catch (err) {
+    console.log(err);
+  }
 
-//     const response = await fetch(url, options);
-//     return await response.json();
-//   } catch (err) {
-//     console.log(err);
-//   }
-
-//   return null;
-// };
+  return null;
+};
 
 
 
